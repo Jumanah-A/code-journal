@@ -15,9 +15,45 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <header>
+  <header class="header-background">
+    <div class="header">
+      <!-- heading row-->
+        <div class="row column-full">
+      <h3 class="row header libre-font">Code Journal</h3>
+      </div>
+    </div>
   </header>
-  <main>
+  <main class="entry-background libre-font one-rem-padding">
+    <div data-view="entry-form">
+      <form id="entry">
+        <!--  new entry row-->
+        <div class="row column-full one-two-padding">
+          <h2 class="title">New Entry</h2>
+        </div>
+        <!-- entry row-->
+        <div class="row one-rem-padding">
+          <div class="column-half">
+            <label for="image"></label>
+            <img src="images/placeholder-image-square.jpg">
+          </div>
+          <div class="column-half libre-font">
+            <label for="entry-title">Title</label>
+            <input required name="title" type="text" id="entry-title">
+            <label for="entry-photo-url">Photo URL</label>
+            <input required name="photo-url" type="url" id="entry-photo-url">
+          </div>
+          <div class="column-full">
+            <label for="entry-notes">Notes</label>
+            <textarea required rows = "6" name="notes" id="entry-notes"></textarea>
+          </div>
+
+        </div>
+        <!-- button row-->
+        <div class=" row column-full flex-end one-two-padding">
+          <button type="submit">SAVE</button>
+        </div>
+      </form>
+    </div>
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>

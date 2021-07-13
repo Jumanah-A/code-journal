@@ -14,19 +14,21 @@
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
+<body class="entry-background">
   <header class="header-background">
     <div class="header">
-        <div class="row column-full">
-      <h3 class="row header libre-font">Code Journal</h3>
+      <div class="container">
+        <h3 class="row header libre-font">Code Journal</h3>
       </div>
     </div>
   </header>
-  <main class="entry-background libre-font one-rem-padding">
+  <main class=" container libre-font">
     <div data-view="entry-form">
       <form id="entry">
-        <div class="row column-full zero-one-and-half-padding">
-          <h2 class="title">New Entry</h2>
+        <div class="row zero-one-and-half-padding">
+          <div class="column-full">
+            <h2 class="title">New Entry</h2>
+          </div>
         </div>
         <div class="row one-rem-padding">
           <div class="column-half">
@@ -44,8 +46,10 @@
             <textarea required rows = "6" name="notes" id="entry-notes"></textarea>
           </div>
         </div>
-        <div class=" row column-full flex-end zero-one-and-half-padding">
-          <button type="submit">SAVE</button>
+        <div class=" row flex-end zero-one-and-half-padding">
+          <div class="column-full">
+            <button type="submit">SAVE</button>
+          </div>
         </div>
       </form>
     </div>

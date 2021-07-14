@@ -14,6 +14,11 @@ label {
 img {
   width: 100%;
   height: auto;
+  border-radius: 0.25rem;
+}
+
+ul {
+  padding-left: 0;
 }
 
 input,
@@ -28,7 +33,7 @@ textarea {
 }
 
 header {
-  padding: 1rem 2rem;
+  padding: 1rem 0;
 }
 
 button {
@@ -53,6 +58,24 @@ textarea:focus {
   box-shadow: 0 0 1px 1px #562b80;
 }
 
+a {
+  text-decoration: none;
+  color: white;
+  padding: 0 1rem;
+}
+
+a:visited {
+  text-decoration: none;
+  color: white;
+  font-family: 'Proza Libre', sans-serif;
+  font-size: medium;
+  font-weight: normal;
+}
+
+/* .entries-tab {
+
+} */
+
 .header-background {
   background-color: #562b80;
 }
@@ -65,12 +88,8 @@ textarea:focus {
   display: flex;
 }
 
-.zero-one-and-half-padding {
-  padding: 0 1.5rem;
-}
-
-.one-rem-padding {
-  padding: 1rem;
+.bottom-padding {
+  padding-bottom: 2rem;
 }
 
 .entry-background {
@@ -90,4 +109,12 @@ textarea:focus {
 .header {
   color: white;
   font-weight: 400;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.top-padding {
+  padding: 1.5rem 0 1.5rem;
 }

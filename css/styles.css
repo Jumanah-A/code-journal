@@ -72,9 +72,9 @@ a:visited {
   font-weight: normal;
 }
 
-/* .entries-tab {
-
-} */
+.no-entries {
+  text-align: center;
+}
 
 .header-background {
   background-color: #562b80;
@@ -89,7 +89,7 @@ a:visited {
 }
 
 .bottom-padding {
-  padding-bottom: 2rem;
+  padding-bottom: 1rem;
 }
 
 .entry-background {
@@ -103,7 +103,7 @@ a:visited {
 }
 
 .libre-font {
-  font-family: 'Proza Libre', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .header {
@@ -117,4 +117,8 @@ a:visited {
 
 .top-padding {
   padding: 1.5rem 0 1.5rem;
+}
+
+.top-padding-one {
+  padding-top: 1rem;
 }

@@ -31,3 +31,8 @@ function handleSubmit(event) {
   $form.reset();
   $img.setAttribute('src', placeholder);
 }
+
+// function entryTree(entry)
+// {
+
+// }

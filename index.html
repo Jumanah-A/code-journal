@@ -14,23 +14,25 @@
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
 </head>
-<body class="entry-background">
+<body class="entry-background libre-font">
   <header class="header-background">
     <div class="header">
-      <div class="container">
-        <h3 class="row header libre-font">Code Journal</h3>
+      <div class="container display-flex">
+        <div class="row">
+          <h3 class="header header-tab">Code Journal</h3>
+          <a class="entries-tab" href="">Entries</a>
+        </div>
       </div>
     </div>
   </header>
   <main class=" container libre-font">
-    <div data-view="entry-form">
+    <div data-view= "entry-form" class="view hidden">
+      <!-- class=" entry-form hidden"-->
       <form id="entry">
-        <div class="row zero-one-and-half-padding">
-          <div class="column-full">
-            <h2 class="title">New Entry</h2>
-          </div>
+        <div class="row top-padding">
+          <h2 class="title">New Entry</h2>
         </div>
-        <div class="row one-rem-padding">
+        <div class="row top-padding">
           <div class="column-half">
             <label for="image"></label>
             <img src="images/placeholder-image-square.jpg">
@@ -46,12 +48,24 @@
             <textarea required rows = "6" name="notes" id="entry-notes"></textarea>
           </div>
         </div>
-        <div class=" row zero-one-and-half-padding">
+        <div class=" row top-padding">
           <div class="column-full display-flex flex-end">
             <button type="submit">SAVE</button>
           </div>
         </div>
       </form>
+    </div>
+    <div data-view="entries" class="view">
+      <!-- class="entries" -->
+      <div class="row libre-font">
+        <div class="top-padding column-full display-flex space-between">
+          <h1>Entries</h1>
+          <button class="new-button">NEW</button>
+        </div>
+      </div>
+      <ul>
+        <p class="no-entries">No entries have been recorded.</p>
+      </ul>
     </div>
   </main>
   <script src="js/data.js"></script>

@@ -9,6 +9,9 @@ var placeholder = $img.getAttribute('src');
 var $entryTitle = $elements.title;
 var $entryNotes = $elements.notes;
 
+// console.log("hello");
+// console.log(document.getElementsByTagName("i"));
+// console.log(document.querySelector("edit-icon fas fa-pen fa-2x"));
 $photoUrl.addEventListener('input', handlePhoto);
 function handlePhoto(event) {
   if ($photoUrl.value === '') {
@@ -44,12 +47,25 @@ function entryTree(entry) {
   entryHeading.className = 'top-padding-one bottom-padding';
   entryHeading.textContent = entry.title;
 
+  var iconEl = document.createElement('i');
+  iconEl.className = 'edit-icon fas fa-pen fa-2x';
+
+  var iconAnchor = document.createElement('a');
+  iconAnchor.className = 'edit-pen';
+  iconAnchor.setAttribute('href', '');
+  iconAnchor.appendChild(iconEl);
+
+  var headingRow = document.createElement('div');
+  headingRow.className = 'row space-between';
+  headingRow.appendChild(entryHeading);
+  headingRow.appendChild(iconAnchor);
+
   var entryImg = document.createElement('img');
   entryImg.setAttribute('src', entry.photoUrl);
 
   var halfText = document.createElement('div');
   halfText.className = 'column-half bottom-padding';
-  halfText.appendChild(entryHeading);
+  halfText.appendChild(headingRow);
   halfText.appendChild(notesText);
 
   var halfImg = document.createElement('div');
@@ -82,11 +98,14 @@ function handleClick(event) {
     switchView('entries');
   } else if (event.target.matches('.new-button')) {
     switchView('entry-form');
+  } else if (event.target.matches('.edit-pen')) {
+    // console.log("hello this is editing page whooohoho!! yeee");
+
   }
 }
 document.querySelector('header').addEventListener('click', handleClick);
 document.querySelector('.new-button').addEventListener('click', handleClick);
-
+// document.querySelector('.edit-pen').addEventListener('click', handleClick);
 var $viewList = document.querySelectorAll('.view');
 function switchView(view) {
   for (var i = 0; i < $viewList.length; i++) {

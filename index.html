@@ -50,7 +50,7 @@
         </div>
         <div class=" row top-padding">
           <div class="column-full display-flex flex-end">
-            <button type="submit">SAVE</button>
+            <button class="button" type="submit">SAVE</button>
           </div>
         </div>
       </form>
@@ -59,16 +59,42 @@
       <div class="row libre-font">
         <div class="top-padding column-full display-flex space-between">
           <h1>Entries</h1>
-          <button class="new-button">NEW</button>
+          <button class="new-button button">NEW</button>
         </div>
       </div>
       <ul>
         <p class="no-entries">No entries have been recorded.</p>
       </ul>
     </div>
-    <!-- <div data-view="edit-entry" class="view">
+    <div data-view="edit-entry" class="view hidden">
+      <form id="entry-edit-form">
+        <div class="row top-padding">
+          <h2 class="title">Edit Entry</h2>
+        </div>
+        <div class="row top-padding">
+          <div class="column-half">
+            <label for="image"></label>
+            <img src="images/placeholder-image-square.jpg">
+          </div>
+          <div class="column-half libre-font">
+            <label for="entry-title">Title</label>
+            <input required name="title" type="text" id="edit-entry-title">
+            <label for="entry-photo-url">Photo URL</label>
+            <input required name="photoUrl" type="url" id="edit-entry-photo-url">
+          </div>
+          <div class="column-full">
+            <label for="entry-notes">Notes</label>
+            <textarea required rows="6" name="notes" id="edit-entry-notes"></textarea>
+          </div>
+        </div>
+        <div class=" row top-padding">
+          <div class="column-full display-flex flex-end">
+            <button type="submit">SAVE</button>
+          </div>
+        </div>
+      </form>
 
-    </div> -->
+    </div>
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>

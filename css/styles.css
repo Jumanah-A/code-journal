@@ -37,15 +37,21 @@ header {
 }
 
 button {
-  background-color: #562b80;
+  border: none;
+}
+
+/* button {
+  background-color: none;
+
+  /* background-color: #562b80;
   border: none;
   color: white;
   padding: 0.5rem 1rem;
   cursor: pointer;
-}
+  border-radius: 0.25rem; */
 
+/* } */
 form,
-button,
 input,
 textarea {
   border-radius: 0.25rem;
@@ -125,4 +131,13 @@ a:visited {
 
 .edit-icon {
   color: #562b80;
+}
+
+.button {
+  background-color: #562b80;
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 0.25rem;
 }

@@ -40,12 +40,14 @@ function handleSubmit(event) {
   } else {
     for (var i = 0; i < len; i++) {
       if (data.editing !== null) {
+        // console.log()
         if (String(data.entries[i].entryId) === String(data.editing.entryId)) {
           var editCurrent = JSON.parse(JSON.stringify(data.editing));
           editCurrent[$entryTitle.name] = $entryTitle.value;
           editCurrent[$photoUrl.name] = $photoUrl.value;
           editCurrent[$entryNotes.name] = $entryNotes.value;
           $ul.replaceChild(entryTree(editCurrent), document.getElementById(data.editing.entryId));
+          // data.entries[i] = data.editing;
           data.editing = null;
           break;
         }
@@ -133,7 +135,14 @@ function handleClick(event) {
   } else if (event.target.matches('.new-button')) {
     switchView('entry-form');
   } else if (event.target.className === 'edit-icon fas fa-pen fa-2x') {
-    var curObject = data.entries.filter(j => String(j.entryId) === String(event.target.id))[0];
+    var curObject;
+    for (var i = 0; i < data.entries.length; i++) {
+      if (String(data.entries[i].entryId) === String(event.target.id)) {
+        curObject = data.entries[i];
+        break;
+      }
+    }
+    // var curObject = data.entries.filter(j => String(j.entryId) === String(event.target.id))[0];
     data.editing = curObject;
     switchView('entry-form');
     handleEditing(curObject);

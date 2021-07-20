@@ -40,14 +40,16 @@ function handleSubmit(event) {
   } else {
     for (var i = 0; i < len; i++) {
       if (data.editing !== null) {
-        // console.log()
         if (String(data.entries[i].entryId) === String(data.editing.entryId)) {
           var editCurrent = JSON.parse(JSON.stringify(data.editing));
           editCurrent[$entryTitle.name] = $entryTitle.value;
           editCurrent[$photoUrl.name] = $photoUrl.value;
           editCurrent[$entryNotes.name] = $entryNotes.value;
+
+          data.entries[i].title = editCurrent[$entryTitle.name];
+          data.entries[i].notes = editCurrent[$entryNotes.name];
+          data.entries[i].photoUrl = editCurrent[$photoUrl.name];
           $ul.replaceChild(entryTree(editCurrent), document.getElementById(data.editing.entryId));
-          // data.entries[i] = data.editing;
           data.editing = null;
           break;
         }
@@ -142,11 +144,8 @@ function handleClick(event) {
         break;
       }
     }
-    // var curObject = data.entries.filter(j => String(j.entryId) === String(event.target.id))[0];
-    data.editing = curObject;
-    switchView('entry-form');
     handleEditing(curObject);
-
+    switchView('entry-form');
   }
 }
 document.querySelector('header').addEventListener('click', handleClick);

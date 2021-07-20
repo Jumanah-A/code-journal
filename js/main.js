@@ -8,6 +8,7 @@ var placeholder = $img.getAttribute('src');
 var $entryTitle = $elements.title;
 var $entryNotes = $elements.notes;
 var $ul = document.querySelector('ul');
+var $deleteEntry = document.querySelector('.delete-entry');
 
 if (data.entries.length === 0) {
   document.querySelector('.no-entries').className = 'no-entries';
@@ -132,11 +133,19 @@ function handleEditing(entry) {
 }
 
 function handleClick(event) {
+  var $editing = document.querySelector('.editing');
+  // console.log($editing);
+  // console.log($editing.className);
   if (event.target.matches('.entries-tab')) {
     switchView('entries');
   } else if (event.target.matches('.new-button')) {
+    $editing.className = 'editing column-full display-flex flex-end';
+    $deleteEntry.className = 'delete-entry hidden';
     switchView('entry-form');
+
   } else if (event.target.className === 'edit-icon fas fa-pen fa-2x') {
+    $editing.className = 'editing column-full display-flex space-between';
+    $deleteEntry.className = 'delete-entry';
     var curObject;
     for (var i = 0; i < data.entries.length; i++) {
       if (String(data.entries[i].entryId) === String(event.target.id)) {
@@ -144,6 +153,7 @@ function handleClick(event) {
         break;
       }
     }
+
     handleEditing(curObject);
     switchView('entry-form');
   }
@@ -162,3 +172,8 @@ function switchView(view) {
     }
   }
 }
+
+// $deleteEntry.addEventListener('click',handleDelete);
+// function handleDelete(event)
+// {
+// }

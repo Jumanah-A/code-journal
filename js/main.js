@@ -136,8 +136,6 @@ function handleEditing(entry) {
 function handleClick(event) {
   var curObject;
   var $editing = document.querySelector('.editing');
-  // console.log($editing);
-  // console.log($editing.className);
   if (event.target.matches('.entries-tab')) {
     switchView('entries');
   } else if (event.target.matches('.new-button')) {
@@ -146,30 +144,28 @@ function handleClick(event) {
     switchView('entry-form');
 
   } else if (event.target.className === 'edit-icon fas fa-pen fa-2x') {
-    // console.log("hileonklb");
-    // console.log(event.target.id);
     deleteId = event.target.id;
     $editing.className = 'editing column-full display-flex space-between';
     $deleteEntry.className = 'delete-entry';
-    // var curObject;
+
     for (var i = 0; i < data.entries.length; i++) {
       if (String(data.entries[i].entryId) === String(event.target.id)) {
         curObject = data.entries[i];
         break;
       }
     }
-    // console.log(curObject);
     handleEditing(curObject);
     switchView('entry-form');
   } else if (event.target.className === 'delete-entry') {
     document.querySelector('.overlay').className = 'overlay';
   } else if (event.target.className === 'cancel') {
-    // console.log("cancel is pressed");
     document.querySelector('.overlay').className = 'overlay hidden';
   } else if (event.target.className === 'confirm') {
-    // console.log("confirm is pressed");
     handleDelete();
     switchView('entries');
+    if (data.entries.length === 0) {
+      document.querySelector('.no-entries').className = 'no-entries';
+    }
   }
 }
 document.querySelector('header').addEventListener('click', handleClick);

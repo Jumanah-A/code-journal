@@ -9,6 +9,7 @@ var $entryTitle = $elements.title;
 var $entryNotes = $elements.notes;
 var $ul = document.querySelector('ul');
 var $deleteEntry = document.querySelector('.delete-entry');
+var deleteId;
 
 if (data.entries.length === 0) {
   document.querySelector('.no-entries').className = 'no-entries';
@@ -146,6 +147,8 @@ function handleClick(event) {
 
   } else if (event.target.className === 'edit-icon fas fa-pen fa-2x') {
     // console.log("hileonklb");
+    // console.log(event.target.id);
+    deleteId = event.target.id;
     $editing.className = 'editing column-full display-flex space-between';
     $deleteEntry.className = 'delete-entry';
     // var curObject;
@@ -161,11 +164,12 @@ function handleClick(event) {
   } else if (event.target.className === 'delete-entry') {
     document.querySelector('.overlay').className = 'overlay';
   } else if (event.target.className === 'cancel') {
+    // console.log("cancel is pressed");
     document.querySelector('.overlay').className = 'overlay hidden';
   } else if (event.target.className === 'confirm') {
-    // console.log(event.target.id);
-    // console.log(curObject);
+    // console.log("confirm is pressed");
     handleDelete();
+    switchView('entries');
   }
 }
 document.querySelector('header').addEventListener('click', handleClick);
@@ -188,5 +192,11 @@ document.querySelector('.confirm').addEventListener('click', handleClick);
 document.querySelector('.cancel').addEventListener('click', handleClick);
 
 function handleDelete(event) {
-  // console.log(event.target.id);
+  $ul.removeChild(document.getElementById(deleteId));
+  for (var i = 0; i < data.entries.length; i++) {
+    if (JSON.stringify(data.entries[i].entryId) === deleteId) {
+      data.entries.splice(i, 1);
+      break;
+    }
+  }
 }

@@ -8,6 +8,7 @@ var placeholder = $img.getAttribute('src');
 var $entryTitle = $elements.title;
 var $entryNotes = $elements.notes;
 var $ul = document.querySelector('ul');
+var $deleteEntry = document.querySelector('.delete-entry');
 
 if (data.entries.length === 0) {
   document.querySelector('.no-entries').className = 'no-entries';
@@ -132,25 +133,49 @@ function handleEditing(entry) {
 }
 
 function handleClick(event) {
+  var curObject;
+  var $editing = document.querySelector('.editing');
   if (event.target.matches('.entries-tab')) {
     switchView('entries');
   } else if (event.target.matches('.new-button')) {
+    document.querySelector('.title').textContent = 'New Entry';
+    $editing.className = 'editing column-full display-flex flex-end';
+    $deleteEntry.className = 'delete-entry hidden';
     switchView('entry-form');
+
   } else if (event.target.className === 'edit-icon fas fa-pen fa-2x') {
-    var curObject;
+    $editing.className = 'editing column-full display-flex space-between';
+    $deleteEntry.className = 'delete-entry';
+
     for (var i = 0; i < data.entries.length; i++) {
       if (String(data.entries[i].entryId) === String(event.target.id)) {
         curObject = data.entries[i];
         break;
       }
     }
+    data.editing = curObject;
     handleEditing(curObject);
     switchView('entry-form');
+  } else if (event.target.className === 'delete-entry') {
+    document.querySelector('.overlay').className = 'overlay';
+  } else if (event.target.className === 'cancel') {
+    document.querySelector('.overlay').className = 'overlay hidden';
+  } else if (event.target.className === 'confirm') {
+    handleDelete();
+    $form.reset();
+    $img.setAttribute('src', placeholder);
+    switchView('entries');
+    document.querySelector('.overlay').className = 'overlay hidden';
+    if (data.entries.length === 0) {
+
+      document.querySelector('.no-entries').className = 'no-entries';
+    }
   }
 }
 document.querySelector('header').addEventListener('click', handleClick);
 document.querySelector('.new-button').addEventListener('click', handleClick);
 document.querySelector('ul').addEventListener('click', handleClick);
+document.querySelector('.delete-entry').addEventListener('click', handleClick);
 
 function switchView(view) {
   var $viewList = document.querySelectorAll('.view');
@@ -161,4 +186,17 @@ function switchView(view) {
       $viewList[i].className = 'view';
     }
   }
+}
+
+document.querySelector('.confirm').addEventListener('click', handleClick);
+document.querySelector('.cancel').addEventListener('click', handleClick);
+function handleDelete(event) {
+  $ul.removeChild(document.getElementById(data.editing.entryId));
+  for (var i = 0; i < data.entries.length; i++) {
+    if (JSON.stringify(data.entries[i].entryId) === JSON.stringify(data.editing.entryId)) {
+      data.entries.splice(i, 1);
+      break;
+    }
+  }
+  data.editing = null;
 }
